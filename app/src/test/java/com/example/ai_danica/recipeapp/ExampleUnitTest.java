@@ -1,4 +1,4 @@
-package ucsc.slugchefs.bitetoeat;
+package com.example.ai_danica.recipeapp;
 
 import org.junit.Test;
 

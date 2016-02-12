@@ -1,4 +1,4 @@
-package ucsc.slugchefs.bitetoeat;
+package com.example.ai_danica.recipeapp;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

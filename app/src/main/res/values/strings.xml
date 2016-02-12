@@ -1,3 +1,19 @@
 <resources>
-    <string name="app_name">BiteToEat</string>
+    <string name="app_name">RecipeApp</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_conversion">Conversion</string>
+    <string-array name="brew_array">
+        <item>Cups</item>
+        <item>Teaspoons</item>
+        <item>Tablespoons</item>
+        <item>Pounds</item>
+        <item>Ounces</item>
+        <item>Pint</item>
+        <item>Gallon</item>
+        <item>Quarts</item>
+        <item>Litres</item>
+    </string-array>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 </resources>
