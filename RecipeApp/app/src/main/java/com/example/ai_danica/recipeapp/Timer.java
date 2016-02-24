@@ -37,11 +37,11 @@ public class Timer extends AppCompatActivity {
         text = (TextView) this.findViewById(R.id.timer);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         //Setting the title and back button
-        getSupportActionBar().setTitle("Timer");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle("Timer");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
     }

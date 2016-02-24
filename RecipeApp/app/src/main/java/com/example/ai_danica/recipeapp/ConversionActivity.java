@@ -35,13 +35,13 @@ public class ConversionActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.conversion);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
 
         //Setting the title and back button
-        getSupportActionBar().setTitle("Convert Measurements");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle("Convert Measurements");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Setting up the spinner
         fromMeasurement();

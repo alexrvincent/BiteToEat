@@ -33,11 +33,11 @@ public class RecipeCreation extends AppCompatActivity {
         Button save = (Button) findViewById(R.id.save);
 
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
         //Setting the title and back button
-        getSupportActionBar().setTitle("Create Recipe");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle("Create Recipe");
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 
