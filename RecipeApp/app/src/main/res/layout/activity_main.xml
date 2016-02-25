@@ -46,7 +46,8 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:layout_margin="@dimen/fab_margin"
-            android:src="@android:drawable/ic_dialog_email" />
+            android:scaleType="center"
+            android:src="@drawable/ic_create_recipe" />
 
     </android.support.design.widget.CoordinatorLayout>
 
@@ -55,7 +56,7 @@
         android:layout_width="270dp"
         android:layout_height="match_parent"
         android:layout_gravity="left|start"
-        android:background="#ffeeeeee" />
+        android:background="@color/colorPrimaryDark" />
 
 
 </android.support.v4.widget.DrawerLayout>
