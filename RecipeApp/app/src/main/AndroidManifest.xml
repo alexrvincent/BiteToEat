@@ -9,9 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,26 +19,31 @@
         <activity
             android:name=".ConversionActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity">
 
         </activity>
 
         <activity
             android:name=".Timer"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity">
 
         </activity>
         <activity
             android:name=".RecipeCreation"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity"
+            android:windowSoftInputMode="adjustPan">
 
         </activity>
         <activity
             android:name=".RecipesPage"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".MainActivity">
 
         </activity>
     </application>
