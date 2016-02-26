@@ -35,15 +35,6 @@ public class Timer extends AppCompatActivity {
         setContentView(R.layout.timer_layout);
         startB = (Button) this.findViewById(R.id.button);
         text = (TextView) this.findViewById(R.id.timer);
-
-
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-        //Setting the title and back button
-        //getSupportActionBar().setTitle("Timer");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
     }
 
     /*
@@ -59,15 +50,13 @@ public class Timer extends AppCompatActivity {
 
         //text.setText(text.getText() + String.valueOf(startTime / 1000));
         countDownTimer = new MyCountDownTimer(startTime, interval);
-        if (!timerHasStarted) {
-            countDownTimer.start();
-            timerHasStarted = true;
-            startB.setText("STOP");
-        } else if (timerHasStarted) {
-            countDownTimer.cancel();
-            timerHasStarted = false;
-            startB.setText("RESTART");
-        }
+
+        countDownTimer.start();
+
+    }
+
+    public void clickedStop(View v){
+        countDownTimer.cancel();
     }
 
     @Override

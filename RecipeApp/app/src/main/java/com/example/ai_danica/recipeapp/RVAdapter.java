@@ -42,6 +42,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             if (holder instanceof RecipeViewHolder) {
                 RecipeViewHolder cvh = (RecipeViewHolder) holder;
                 cvh.recipeName.setText(recipes.get(i).getName());
+                cvh.recipeType.setText(recipes.get(i).getType());
             }
 
         }

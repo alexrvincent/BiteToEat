@@ -8,6 +8,14 @@ import android.os.Parcelable;
  */
 public class Recipe implements Parcelable {
 
+    Recipe(String id, String name, String ingredients, String instructions, String type, String tags){
+        this.id = id;
+        this.name = name;
+        this.ingredients = ingredients;
+        this.instructions = instructions;
+        this.type = type;
+        this.tags = tags;
+    }
     Recipe(String id, String name, String ingredients, String instructions){
         this.id = id;
         this.name = name;
@@ -19,6 +27,8 @@ public class Recipe implements Parcelable {
     String ingredients;
     String instructions;
     String id;
+    String type;
+    String tags;
 
 
     //Parcel Constructor Allows Object to be passed
@@ -75,9 +85,14 @@ public class Recipe implements Parcelable {
         return this.id;
     }
 
+    public String getType() {return this.type;}
+
+    public String getTags() {return this.tags;}
+
     public void setName(String name){
         this.name = name;
     }
+    public void setType(String name) {this.type = type;}
     public void setIngredients(String ing){
         this.ingredients = ing;
     }

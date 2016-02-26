@@ -189,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addDrawerItems() {
-        String[] osArray = {"Android", "Tools Conversion", "Timer"};
+        String[] osArray = {"Tools Conversion", "Timer"};
         // Integer[] imgid = {R.drawable.ic_action_copy, R.drawable.ic_action_drawer,
         // R.drawable.ic_action_name, R.drawable.ic_action_refresh,
         // R.drawable.ic_action_share};
@@ -202,13 +202,10 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch ((int) id) {
                     case 0:
-                        // Toast.makeText(Hello_World.this, "Android", Toast.LENGTH_SHORT).show();
-                        break;
-                    case 1:
                         Intent intent = new Intent(MainActivity.this, ConversionActivity.class);
                         startActivity(intent);
                         break;
-                    case 2:
+                    case 1:
                         //TODO: Maybe implement a timer?
                         Intent timerIntent = new Intent(MainActivity.this, Timer.class);
                         startActivity(timerIntent);
@@ -279,8 +276,11 @@ public class MainActivity extends AppCompatActivity {
             String recipe_name = sp_file.getString("NAME", "ERROR_LOADING");
             String recipe_instructions = sp_file.getString("INSTRUCTIONS", "ERROR_LOADING");
             String recipe_ingredients = sp_file.getString("INGREDIENTS", "ERROR_LOADING");
+            String recipe_type = sp_file.getString("TYPE", "ERROR_LOADING");
+            String recipe_tags = sp_file.getString("TAGS", "ERROR_LOADING");
 
-            Recipe loadedRecipe = new Recipe(unique_id_loaded, recipe_name, recipe_instructions, recipe_ingredients);
+            Recipe loadedRecipe = new Recipe(unique_id_loaded, recipe_name, recipe_instructions, recipe_ingredients, recipe_type, recipe_tags);
+            //loadedRecipe.setType(recipe_type);
 
             recipes.add(loadedRecipe);
         }
@@ -312,7 +312,7 @@ public class MainActivity extends AppCompatActivity {
         reloadSPManager();
 
         View coordLayoutView = findViewById(R.id.coordview);
-        Snackbar.make(coordLayoutView, "Character Deleted", Snackbar.LENGTH_LONG)
+        Snackbar.make(coordLayoutView, "Recipe Deleted", Snackbar.LENGTH_LONG)
                 .setAction("UNDO", null).show();
     }
 
