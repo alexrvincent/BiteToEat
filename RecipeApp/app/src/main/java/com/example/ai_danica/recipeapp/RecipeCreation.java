@@ -194,7 +194,6 @@ public class RecipeCreation extends AppCompatActivity {
         //Alert User that the current character has been saved
         Toast.makeText(RecipeCreation.this, "New Recipe Created!", Toast.LENGTH_SHORT).show();
 
-
         //Returning to the MainActivity once users made something.
         Intent returnIntent = new Intent();
         returnIntent.putExtra("newRecipeTag", newRecipe);
