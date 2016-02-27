@@ -33,13 +33,15 @@ public class Recipe implements Parcelable {
 
     //Parcel Constructor Allows Object to be passed
     public Recipe(Parcel in){
-        String[] data = new String[4];
+        String[] data = new String[6];
         in.readStringArray(data);
 
         this.id = data[0];
         this.name = data[1];
         this.instructions = data[2];
         this.ingredients = data[3];
+        this.type = data[4];
+        this.tags = data[5];
 
     }
 
@@ -52,7 +54,7 @@ public class Recipe implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags){
         //TODO Auto-generated method stub
-        dest.writeStringArray(new String[]{this.id,this.name,this.instructions, this.ingredients});
+        dest.writeStringArray(new String[]{this.id,this.name,this.instructions,this.ingredients,this.type,this.tags});
     }
 
     public static final Parcelable.Creator<Recipe> CREATOR = new Parcelable.Creator<Recipe>() {
@@ -99,5 +101,5 @@ public class Recipe implements Parcelable {
     public void setInstructions(String instruct){
         this.instructions = instruct;
     }
-    //test
+    //test1
 }
