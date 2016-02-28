@@ -8,7 +8,7 @@
     android:fitsSystemWindows="true"
     tools:context="com.example.ai_danica.recipeapp.ConversionActivity">
 
-    <android.support.design.widget.AppBarLayout
+    <!-- <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -20,14 +20,12 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.AppBarLayout> -->
 
     <include layout="@layout/content_main" />
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:backgroundTint="#e4f0bdbd"
-    android:background="#eeadf2">
+    android:layout_height="match_parent">
 
 
     <Spinner
@@ -60,7 +58,7 @@
         android:inputType="number"
         android:ems="10"
         android:id="@+id/UserNum"
-        android:background="@drawable/shapes"
+        android:background="@drawable/edittext"
         android:layout_alignBottom="@+id/From"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
@@ -88,7 +86,8 @@
         android:id="@+id/textView"
         android:layout_below="@+id/From"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="37dp" />
+        android:layout_marginTop="37dp"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -100,7 +99,11 @@
         android:layout_alignParentStart="true"
         android:layout_alignBottom="@+id/To"
         android:layout_toLeftOf="@+id/button"
-        android:layout_toStartOf="@+id/button" />
+        android:layout_toStartOf="@+id/button"
+        android:textColor="@color/colorPrimaryDark"
+        android:text="0.0"
+        android:background="@drawable/edittext"
+        android:gravity="center"/>
 
 </RelativeLayout>
 </android.support.design.widget.CoordinatorLayout>

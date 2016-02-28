@@ -32,12 +32,12 @@ public class RecipesPage extends AppCompatActivity {
         recipeIngred.setText(recipe.getIngredients());
         recipeInstruct.setText(recipe.getInstructions());
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        //setSupportActionBar(toolbar);
 
         //Setting the title and back button
-        getSupportActionBar().setTitle(recipe.getName());
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        //getSupportActionBar().setTitle(recipe.getName());
+        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 

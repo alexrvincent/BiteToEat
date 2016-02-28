@@ -13,7 +13,20 @@
         <item>Quarts</item>
         <item>Litres</item>
     </string-array>
-
+    <string-array name="recipe_type">
+        <item>Breakfast</item>
+        <item>Dessert</item>
+        <item>Healthy</item>
+        <item>Alcoholic</item>
+        <item>Baby/Kids</item>
+        <item>Family</item>
+        <item>Poultry</item>
+        <item>Beef</item>
+        <item>Fruits</item>
+        <item>Seafood</item>
+        <item>Asian Cuisine</item>
+        <item>Smoothies</item>
+    </string-array>
     <string name="drawer_open">Open navigation drawer</string>
     <string name="drawer_close">Close navigation drawer</string>
 </resources>

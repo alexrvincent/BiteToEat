@@ -5,7 +5,7 @@
     android:layout_height="fill_parent"
     android:orientation="vertical">
 
-    <android.support.design.widget.AppBarLayout
+    <!--<android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay">
@@ -17,7 +17,7 @@
             android:background="?attr/colorPrimary"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    </android.support.design.widget.AppBarLayout>
+    </android.support.design.widget.AppBarLayout> -->
     <TextView
         android:id="@+id/timer"
         android:layout_width="wrap_content"
@@ -25,7 +25,9 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:paddingRight="10dip"
-        android:textSize="50dp" />
+        android:textSize="50dp"
+        android:text="0:00:00"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <Button
         android:id="@+id/button"
@@ -33,11 +35,10 @@
         android:layout_height="wrap_content"
         android:onClick = "onClick"
         android:text="Start"
-        android:layout_alignBottom="@+id/minutes"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_toRightOf="@+id/textView2"
-        android:layout_toEndOf="@+id/textView2" />
+        android:background="@color/colorAccent"
+        android:layout_alignBottom="@+id/textView2"
+        android:layout_toRightOf="@+id/timer"
+        android:layout_toEndOf="@+id/timer" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -51,7 +52,8 @@
         android:layout_toLeftOf="@+id/minutes"
         android:layout_toStartOf="@+id/minutes"
         android:layout_marginRight="42dp"
-        android:layout_marginEnd="42dp" />
+        android:layout_marginEnd="42dp"
+        android:background="@drawable/edittext"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -61,7 +63,8 @@
         android:id="@+id/minutes"
         android:width="70dp"
         android:layout_alignTop="@+id/hours"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/edittext"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -72,7 +75,8 @@
         android:width="80dp"
         android:layout_above="@+id/minutes"
         android:layout_alignLeft="@+id/minutes"
-        android:layout_alignStart="@+id/minutes" />
+        android:layout_alignStart="@+id/minutes"
+        android:textColor="@color/colorPrimaryDark"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -83,6 +87,20 @@
         android:width="85dp"
         android:layout_above="@+id/minutes"
         android:layout_alignLeft="@+id/hours"
-        android:layout_alignStart="@+id/hours" />
+        android:layout_alignStart="@+id/hours"
+        android:textColor="@color/colorPrimaryDark"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        android:id="@+id/Stop"
+        android:onClick="clickedStop"
+        android:background="@color/colorAccent"
+        android:layout_below="@+id/minutes"
+        android:layout_alignLeft="@+id/button"
+        android:layout_alignStart="@+id/button"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
 
 </RelativeLayout>
