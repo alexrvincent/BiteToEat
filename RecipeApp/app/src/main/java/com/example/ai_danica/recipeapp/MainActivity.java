@@ -8,6 +8,7 @@ import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -190,11 +191,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void addDrawerItems() {
         String[] osArray = {"Tools Conversion", "Timer"};
-        // Integer[] imgid = {R.drawable.ic_action_copy, R.drawable.ic_action_drawer,
+        Integer[] imgid = {R.drawable.ic_tool_conversion, R.drawable.ic_tool_timer};
         // R.drawable.ic_action_name, R.drawable.ic_action_refresh,
         // R.drawable.ic_action_share};
 
-        mAdapter = new NavBarAdapter(this, osArray);
+        mAdapter = new NavBarAdapter(this, osArray, imgid);
         mDrawerList.setAdapter(mAdapter);
 
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -220,9 +221,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+    protected void onResume(){
+        super.onResume();
+        reloadSPManager();
+        reloadRecipes();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
     protected void onRestart() {
         super.onRestart();
         reloadSPManager();
+        reloadRecipes();
 
         //Update this to notifyItemChanged(position) to increase efficiency
         adapter.notifyDataSetChanged();
@@ -286,6 +296,24 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    private void reloadRecipes() {
+        //For each recipe, re-read it's stored values
+        for (int i = 0; i < recipes.size(); ++i) {
+            SharedPreferences sp_rec = getSharedPreferences(recipes.get(i).getUnique_id(), Context.MODE_PRIVATE);
+            String updatedName = sp_rec.getString("NAME", "ERROR_LOADING");
+            String updatedInstruction = sp_rec.getString("NAME", "ERROR_LOADING");
+            String updatedIngredients = sp_rec.getString("INSTRUCTIONS", "ERROR_LOADING");
+            String updatedTags = sp_rec.getString("TAGS", "ERROR_LOADING");
+            String updatedType = sp_rec.getString("TYPE", "ERROR_LOADING");
+            int updated_Icon_id;
+
+            recipes.get(i).setIngredients(updatedIngredients);
+            recipes.get(i).setInstructions(updatedInstruction);
+            recipes.get(i).setName(updatedName);
+            recipes.get(i).setType(updatedType);
+        }
+    }
+
     /*
         If users want to delete the recipe, they will have to touch it for a long time.
      */
@@ -312,12 +340,15 @@ public class MainActivity extends AppCompatActivity {
         reloadSPManager();
 
         View coordLayoutView = findViewById(R.id.coordview);
-        Snackbar.make(coordLayoutView, "Recipe Deleted", Snackbar.LENGTH_LONG)
-                .setAction("UNDO", null).show();
+        Snackbar snackbar = Snackbar.make(coordLayoutView, "Recipe Deleted", Snackbar.LENGTH_LONG);
+        snackbar.setAction("UNDO", null);
+        View snackbarView = snackbar.getView();
+        snackbarView.setBackgroundColor(ContextCompat.getColor(this, R.color.colorPrimaryDark));
+        snackbar.show();
+
     }
 
     /*
-
     After user created the recipe, come back to home screen and add it to the list.
      */
     protected void onActivityResult(int requestCode, int resultCode,
@@ -326,8 +357,6 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 Recipe newResultChar = data.getParcelableExtra("newRecipeTag");
                 createRecipe(recipes.size(), newResultChar);
-
-
             }
         }
     }
@@ -338,6 +367,7 @@ public class MainActivity extends AppCompatActivity {
     private void createRecipe(int position, Recipe newRecipe) {
         adapter.insertItem(position, newRecipe);
         reloadSPManager();
+        reloadRecipes();
     }
 
     /*
