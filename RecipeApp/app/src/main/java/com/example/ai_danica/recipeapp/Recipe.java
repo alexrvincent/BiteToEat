@@ -15,12 +15,14 @@ public class Recipe implements Parcelable {
         this.instructions = instructions;
         this.type = type;
         this.tags = tags;
+        this.photo_id = R.drawable.ic_create_recipe;
     }
     Recipe(String id, String name, String ingredients, String instructions){
         this.id = id;
         this.name = name;
         this.ingredients = ingredients;
         this.instructions = instructions;
+        this.photo_id = R.drawable.ic_create_recipe;
     }
 
     String name;
@@ -29,6 +31,7 @@ public class Recipe implements Parcelable {
     String id;
     String type;
     String tags;
+    int photo_id;
 
 
     //Parcel Constructor Allows Object to be passed
@@ -101,5 +104,6 @@ public class Recipe implements Parcelable {
     public void setInstructions(String instruct){
         this.instructions = instruct;
     }
-    //test1
+
+    public void setPhoto_id(int id) { this.photo_id = id;}
 }
