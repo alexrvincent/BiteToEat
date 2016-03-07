@@ -1,9 +1,7 @@
 package com.example.ai_danica.recipeapp;
 
-import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,7 +11,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -37,8 +34,6 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         return cvh;
 
     }
-
-
 
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int i){
@@ -77,46 +72,6 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         return super.getItemViewType(position);
     }
 
-
-    public void animateTo(List<Recipe> models) {
-        applyAndAnimateRemovals(models);
-        applyAndAnimateAdditions(models);
-        applyAndAnimateMovedItems(models);
-    }
-
-    private void applyAndAnimateRemovals(List<Recipe> newModels) {
-        for (int i = recipes.size() - 1; i >= 0; i--) {
-            final Recipe model = recipes.get(i);
-            if (!newModels.contains(model)) {
-                deleteItem(i);
-            }
-        }
-    }
-
-    private void applyAndAnimateAdditions(List<Recipe> newModels) {
-        for (int i = 0, count = newModels.size(); i < count; i++) {
-            final Recipe model = newModels.get(i);
-            if (!recipes.contains(model)) {
-                insertItem(i, model);
-            }
-        }
-    }
-
-    private void applyAndAnimateMovedItems(List<Recipe> newModels) {
-        for (int toPosition = newModels.size() - 1; toPosition >= 0; toPosition--) {
-            final Recipe model = newModels.get(toPosition);
-            final int fromPosition = recipes.indexOf(model);
-            if (fromPosition >= 0 && fromPosition != toPosition) {
-                moveItem(fromPosition, toPosition);
-            }
-        }
-    }
-
-    public void moveItem(int fromPosition, int toPosition) {
-        final Recipe model = recipes.remove(fromPosition);
-        recipes.add(toPosition, model);
-        notifyItemMoved(fromPosition, toPosition);
-    }
 
     public void setOnItemClickListener(ClickListener clickListener){
         this.clickListener = clickListener;
