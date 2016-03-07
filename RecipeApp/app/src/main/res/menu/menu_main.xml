@@ -14,5 +14,10 @@
         android:title="@string/action_conversion"
         app:showAsAction="never" />
 
+    <item android:id="@+id/action_search"
+        android:title="action_search"
+        app:actionViewClass="android.support.v7.widget.SearchView"
+        app:showAsAction="always"/>
+
 
 </menu>
