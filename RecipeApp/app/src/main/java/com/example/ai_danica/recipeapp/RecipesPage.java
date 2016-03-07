@@ -15,6 +15,9 @@ import android.widget.ImageView;
  * Feel free to modify it.
  */
 public class RecipesPage extends AppCompatActivity {
+
+    String imageFullPath = "ic_type_";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,7 +43,48 @@ public class RecipesPage extends AppCompatActivity {
         recipeTags.setText(recipe.getTags());
 
         //Setting images to the respective fields.
-        recipeTypeImage.setImageResource(R.drawable.ic_create_recipe);
+        switch (recipe.getType()) {
+            case "Breakfast":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_breakfast);
+                break;
+            case "Dessert":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_dessert);
+                break;
+            case "Healthy":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_healthy);
+                break;
+            case "Alcoholic":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_alcohol);
+                break;
+            case "Baby/Kids":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_baby);
+                break;
+            case "Family":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_family);
+                break;
+            case "Poultry":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_chicken);
+                break;
+            case "Beef":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_beef);
+                break;
+            case "Fruits":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_apple);
+                break;
+            case "Seafood":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_seafood);
+                break;
+            case "Asian Culture":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_asian);
+                break;
+            case "Smoothies":
+                recipeTypeImage.setImageResource(R.drawable.ic_type_smoothie);
+                break;
+            default:
+                recipeTypeImage.setImageResource(R.drawable.ic_recipe_list);
+                break;
+        }
+
 
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);
