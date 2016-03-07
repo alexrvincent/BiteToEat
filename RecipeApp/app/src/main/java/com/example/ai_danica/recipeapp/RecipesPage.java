@@ -7,6 +7,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 /**
  * Created by Ai_Danica on 2/22/2016.
@@ -26,11 +27,20 @@ public class RecipesPage extends AppCompatActivity {
         TextView recipeName = (TextView) findViewById(R.id.name);
         TextView recipeIngred = (TextView) findViewById(R.id.ingredients);
         TextView recipeInstruct = (TextView) findViewById(R.id.instructions);
+        TextView recipeType = (TextView) findViewById(R.id.type);
+        TextView recipeTags = (TextView) findViewById(R.id.tags);
+
+        ImageView recipeTypeImage = (ImageView) findViewById(R.id.type_image);
 
         //Setting the text to the respective fields.
         recipeName.setText(recipe.getName());
         recipeIngred.setText(recipe.getIngredients());
         recipeInstruct.setText(recipe.getInstructions());
+        recipeType.setText(recipe.getType());
+        recipeTags.setText(recipe.getTags());
+
+        //Setting images to the respective fields.
+        recipeTypeImage.setImageResource(R.drawable.ic_create_recipe);
 
         //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         //setSupportActionBar(toolbar);

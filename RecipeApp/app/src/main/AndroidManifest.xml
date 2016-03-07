@@ -18,7 +18,7 @@
         </activity>
         <activity
             android:name=".ConversionActivity"
-            android:label="@string/app_name"
+            android:label="Tools Conversion"
             android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity">
 
@@ -26,14 +26,14 @@
 
         <activity
             android:name=".Timer"
-            android:label="@string/app_name"
+            android:label="Timer"
             android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity">
 
         </activity>
         <activity
             android:name=".RecipeCreation"
-            android:label="@string/app_name"
+            android:label="New Recipe"
             android:theme="@style/AppTheme"
             android:parentActivityName=".MainActivity"
             android:windowSoftInputMode="adjustPan">

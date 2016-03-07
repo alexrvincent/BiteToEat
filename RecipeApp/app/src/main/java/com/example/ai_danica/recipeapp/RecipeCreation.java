@@ -128,6 +128,7 @@ public class RecipeCreation extends AppCompatActivity {
             }
         });
     }
+    //test2
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -193,7 +194,6 @@ public class RecipeCreation extends AppCompatActivity {
 
         //Alert User that the current character has been saved
         Toast.makeText(RecipeCreation.this, "New Recipe Created!", Toast.LENGTH_SHORT).show();
-
 
         //Returning to the MainActivity once users made something.
         Intent returnIntent = new Intent();

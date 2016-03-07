@@ -15,12 +15,14 @@ public class Recipe implements Parcelable {
         this.instructions = instructions;
         this.type = type;
         this.tags = tags;
+        this.photo_id = R.drawable.ic_create_recipe;
     }
     Recipe(String id, String name, String ingredients, String instructions){
         this.id = id;
         this.name = name;
         this.ingredients = ingredients;
         this.instructions = instructions;
+        this.photo_id = R.drawable.ic_create_recipe;
     }
 
     String name;
@@ -29,17 +31,20 @@ public class Recipe implements Parcelable {
     String id;
     String type;
     String tags;
+    int photo_id;
 
 
     //Parcel Constructor Allows Object to be passed
     public Recipe(Parcel in){
-        String[] data = new String[4];
+        String[] data = new String[6];
         in.readStringArray(data);
 
         this.id = data[0];
         this.name = data[1];
         this.instructions = data[2];
         this.ingredients = data[3];
+        this.type = data[4];
+        this.tags = data[5];
 
     }
 
@@ -52,7 +57,7 @@ public class Recipe implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags){
         //TODO Auto-generated method stub
-        dest.writeStringArray(new String[]{this.id,this.name,this.instructions, this.ingredients});
+        dest.writeStringArray(new String[]{this.id,this.name,this.instructions,this.ingredients,this.type,this.tags});
     }
 
     public static final Parcelable.Creator<Recipe> CREATOR = new Parcelable.Creator<Recipe>() {
@@ -99,4 +104,6 @@ public class Recipe implements Parcelable {
     public void setInstructions(String instruct){
         this.instructions = instruct;
     }
+
+    public void setPhoto_id(int id) { this.photo_id = id;}
 }

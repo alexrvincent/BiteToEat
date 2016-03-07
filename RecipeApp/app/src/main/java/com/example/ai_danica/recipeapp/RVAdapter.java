@@ -43,6 +43,48 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 RecipeViewHolder cvh = (RecipeViewHolder) holder;
                 cvh.recipeName.setText(recipes.get(i).getName());
                 cvh.recipeType.setText(recipes.get(i).getType());
+                switch (recipes.get(i).getType()) {
+                    case "Breakfast":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_breakfast);
+                        break;
+                    case "Dessert":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_dessert);
+                        break;
+                    case "Healthy":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_healthy);
+                        break;
+                    case "Alcoholic":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_alcohol);
+                        break;
+                    case "Baby/Kids":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_baby);
+                        break;
+                    case "Family":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_family);
+                        break;
+                    case "Poultry":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_chicken);
+                        break;
+                    case "Beef":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_beef);
+                        break;
+                    case "Fruits":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_apple);
+                        break;
+                    case "Seafood":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_seafood);
+                        break;
+                    case "Asian Culture":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_asian);
+                        break;
+                    case "Smoothies":
+                        cvh.recipeImage.setImageResource(R.drawable.ic_type_smoothie);
+                        break;
+                    default:
+                        cvh.recipeImage.setImageResource(R.drawable.ic_recipe_list);
+                        break;
+                }
+
             }
 
         }
@@ -106,6 +148,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
         CardView cv;
         TextView recipeName;
         TextView recipeType;
+        ImageView recipeImage;
 
         //Constructor for CharacterViewHolder class
         RecipeViewHolder(View itemView) {
@@ -114,6 +157,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             //itemView.setOnClickListener(clickListener);
             recipeName = (TextView)itemView.findViewById(R.id.recipe_name);
             recipeType = (TextView)itemView.findViewById(R.id.recipe_type);
+            recipeImage = (ImageView)itemView.findViewById(R.id.recipe_photo);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
