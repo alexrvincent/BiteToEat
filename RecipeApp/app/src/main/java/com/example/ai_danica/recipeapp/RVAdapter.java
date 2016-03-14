@@ -14,7 +14,7 @@ import android.widget.Toast;
 import java.util.List;
 
 /**
- * Created by Alex on 10/12/2015.
+ * This is the adapter class that uses recyclerView and the card view.
  */
 public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     private static ClickListener clickListener;
@@ -35,6 +35,7 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
     }
 
+    //Creates the card on the homepage. Shows the image, name of recipe and the type of it.
     @Override
     public void onBindViewHolder(final RecyclerView.ViewHolder holder, int i){
 
@@ -132,11 +133,13 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     }
 
 
+    //Deleting the card
     public void deleteItem(int position){
         recipes.remove(position);
         notifyItemRemoved(position);
     }
 
+    //Adding the card
     public void insertItem(int position, Recipe newRecipe){
         recipes.add(position, newRecipe);
         notifyItemInserted(position);
@@ -176,11 +179,6 @@ public class RVAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
 
         }
-
-        //@Override
-        //public void onClick(View v){
-        //clickListener.onItemClick(getAdapterPosition(), v);
-        //}
 
     }
 
