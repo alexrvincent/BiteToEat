@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by Ai_Danica on 2/17/2016.
+ * Countdown timer for the tool. Get whatever user inputed and countdown from there.
  */
 public class Timer extends AppCompatActivity {
 

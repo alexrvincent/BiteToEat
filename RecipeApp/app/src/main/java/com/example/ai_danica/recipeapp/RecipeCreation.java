@@ -23,7 +23,7 @@ import android.widget.Toast;
 import java.util.Random;
 
 /**
- * Created by Ai_Danica on 2/21/2016.
+ * This is the Recipe Creation for when players create the recipe.
  */
 public class RecipeCreation extends AppCompatActivity {
 
@@ -162,10 +162,6 @@ public class RecipeCreation extends AppCompatActivity {
      */
     public void clickedSave(View v){
 
-        EditText nameOfRecipe = (EditText) findViewById(R.id.name);
-        EditText instruct = (EditText) findViewById(R.id.instructions);
-        EditText ingred = (EditText) findViewById(R.id.ingredients);
-        EditText tagsTV = (EditText) findViewById(R.id.tags);
 
         String name = nameOfRecipe.getText().toString();
         String instructions = instruct.getText().toString();
@@ -179,19 +175,21 @@ public class RecipeCreation extends AppCompatActivity {
             statsString.append(statsArray[i]).append(",");
         }
 
-        Recipe newRecipe = new Recipe(generateId(), name, instructions, ingredients, type, tags);
+        Recipe newRecipe = new Recipe(generateId(), name,  ingredients, instructions, type, tags);
         //Open up its new SP file and make its editor
         SharedPreferences sharedStats = getSharedPreferences(newRecipe.getUnique_id(), Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedStats.edit();
 
         //Save the newly formed recipe and packaged string
         editor.putString("NAME", newRecipe.getName());
-        editor.putString("INSTRUCTIONS", newRecipe.getInstructions());
         editor.putString("INGREDIENTS", newRecipe.getIngredients());
+        editor.putString("INSTRUCTIONS", newRecipe.getInstructions());
         editor.putString("TYPE", newRecipe.getType());
         editor.putString("TAGS", newRecipe.getTags());
-        editor.apply(); //maybe commit here?
+        editor.apply();
 
+
+        System.out.println("TEST: " + newRecipe.getInstructions());
         //Alert User that the current character has been saved
         Toast.makeText(RecipeCreation.this, "New Recipe Created!", Toast.LENGTH_SHORT).show();
 
@@ -204,7 +202,7 @@ public class RecipeCreation extends AppCompatActivity {
 
     /*
     Just generating an ID for each recipes
-    Got it from Alex's code
+
      */
     private String generateId(){
         StringBuffer randomString = new StringBuffer();
@@ -217,7 +215,7 @@ public class RecipeCreation extends AppCompatActivity {
     }
 
     /*
-    Generating random number. Got it from Alex's code.
+    Generating random number.
      */
     private int getRandomNumber(){
         int randomInt;

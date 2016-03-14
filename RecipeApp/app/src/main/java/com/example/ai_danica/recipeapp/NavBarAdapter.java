@@ -18,7 +18,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * Created by Alex on 4/28/2015.
+ * A class for the navigation bar. Creates its own view.
  */
 public class NavBarAdapter extends ArrayAdapter<String> {
     private final Activity context;
@@ -34,6 +34,7 @@ public class NavBarAdapter extends ArrayAdapter<String> {
         this.imgid = imgid;
     }
 
+    //Makes a view for the the navigations. Adds images.
     public View getView(int position, View view, ViewGroup parent){
         LayoutInflater inflater = context.getLayoutInflater();
         View rowView = inflater.inflate(R.layout.nav_layout, null, true);

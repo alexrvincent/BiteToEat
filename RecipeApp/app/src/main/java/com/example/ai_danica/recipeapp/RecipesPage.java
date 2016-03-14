@@ -10,9 +10,9 @@ import android.widget.TextView;
 import android.widget.ImageView;
 
 /**
- * Created by Ai_Danica on 2/22/2016.
- * Just a simple test and layout of the Recipes page
- * Feel free to modify it.
+ * This is to show the recipe with the name, ingredients, instructions, and
+ * the tags. It is to inform users what they had saved to their device strage
+ *
  */
 public class RecipesPage extends AppCompatActivity {
 
@@ -84,14 +84,6 @@ public class RecipesPage extends AppCompatActivity {
                 recipeTypeImage.setImageResource(R.drawable.ic_recipe_list);
                 break;
         }
-
-
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
-
-        //Setting the title and back button
-        //getSupportActionBar().setTitle(recipe.getName());
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
     }
 

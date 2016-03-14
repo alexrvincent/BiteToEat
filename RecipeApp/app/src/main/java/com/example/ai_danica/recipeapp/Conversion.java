@@ -50,19 +50,21 @@ public class Conversion {
 
     }
 
-    //
+    //PoundsToOunce
     public float fromPoundstoOunce(float num){
             float ounce = 16f;
             float result = (num) * ounce;
             return result;
     }
 
+    //Pint to fluid ounce
     public float fromPintToFluidOunce(float num){
         float flounce = 16f;
         float result = (num) * flounce;
         return result;
     }
 
+    //Pint to Gallon
     public float fromPintToGal(float num){
         float gal = 0.125f;
         float result = (num) * gal;
