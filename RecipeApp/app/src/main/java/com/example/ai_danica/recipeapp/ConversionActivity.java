@@ -14,7 +14,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 
 /**
- * Created by Ai_Danica on 2/7/2016.
+ * This is the Conversion Activity where it makes the conversion
+ * for whatever users decide to convert from.
  */
 public class ConversionActivity extends AppCompatActivity{
 
@@ -35,13 +36,7 @@ public class ConversionActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.conversion);
-        //Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
 
-
-        //Setting the title and back button
-        //getSupportActionBar().setTitle("Convert Measurements");
-        //getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         //Setting up the spinner
         fromMeasurement();

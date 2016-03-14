@@ -31,6 +31,9 @@ import java.util.List;
 import android.app.DialogFragment;
 import android.content.DialogInterface;
 
+/**
+ * Main Activity that stores the shared preferences and handle onclicks.
+ */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -69,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
 
         //On the start, create the recipes that users made previously.
         populateRecipeCards();
-        // List<Character> characters = null;
+
         adapter = new RVAdapter(recipes);
 
         //Handle Clicks on any Card
@@ -103,6 +106,10 @@ public class MainActivity extends AppCompatActivity {
         setupFAB();
     }
 
+    /*
+    Adding items to the action bar
+
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         storeRecipe = recipes;
@@ -117,7 +124,12 @@ public class MainActivity extends AppCompatActivity {
         searchView.setSearchableInfo(
                 searchManager.getSearchableInfo(getComponentName()));
 
+        /*
+        Checks what users type in the search and filter the list. Then, notify
+        the adapter changes.
+         */
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            //This is if users clicked enter to search for the recipes
             @Override
             public boolean onQueryTextSubmit(String query) {
                 final List<Recipe> filteredList = new ArrayList<>();
@@ -138,6 +150,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
 
+            //List will filter automatically to whatever user type
             @Override
             public boolean onQueryTextChange(String newText) {
                 final List<Recipe> filteredList = new ArrayList<>();
@@ -225,8 +238,12 @@ public class MainActivity extends AppCompatActivity {
         alertShow.show();
     }
 
+    /*
+    Setting up the Navigation drawer.
+     */
     private void setupDrawer() {
 
+        //This is to open the navigation bar (users slide it).
         mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout,
                 R.string.drawer_open, R.string.drawer_close) {
 
@@ -246,15 +263,18 @@ public class MainActivity extends AppCompatActivity {
         mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
+    /*
+    Adding items to the navigation layout
+     */
     private void addDrawerItems() {
+        //Add the timer and the Conversion
         String[] osArray = {"Tools Conversion", "Timer"};
         Integer[] imgid = {R.drawable.ic_tool_conversion, R.drawable.ic_tool_timer};
-        // R.drawable.ic_action_name, R.drawable.ic_action_refresh,
-        // R.drawable.ic_action_share};
 
         mAdapter = new NavBarAdapter(this, osArray, imgid);
         mDrawerList.setAdapter(mAdapter);
 
+        //Check which one users clicked on.
         mDrawerList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -264,7 +284,6 @@ public class MainActivity extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case 1:
-                        //TODO: Maybe implement a timer?
                         Intent timerIntent = new Intent(MainActivity.this, Timer.class);
                         startActivity(timerIntent);
                         break;
@@ -277,6 +296,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Reload everything when users resume the app.
     @Override
     protected void onResume(){
         super.onResume();
@@ -285,6 +305,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    //Reload everything after users restart the app.
     @Override
     protected void onRestart() {
         super.onRestart();
@@ -310,15 +331,18 @@ public class MainActivity extends AppCompatActivity {
 
      /* Recycle View Functions */
 
+    //Loading the recipe cards.
     private void populateRecipeCards() {
         initialLoad();
         //reloadCharacterCards();
     }
 
+    /*
+    Using shared preferences to get the recipe.
+     */
     private void reloadSPManager() {
         SharedPreferences sp_mngr = getSharedPreferences("SP_MANAGER", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sp_mngr.edit();
-        //For every character in the array, update it's position-id pair in the SP_MNGR
 
         //use the recipe arrayList.
         for (int i = 0; i < recipes.size(); ++i) {
@@ -330,10 +354,13 @@ public class MainActivity extends AppCompatActivity {
         editor.apply();
     }
 
+    /*
+    Loading the recipe. Get the sharedPreferences that was stored and add it to the list
+     */
     private void initialLoad() {
         SharedPreferences sp_mngr = getSharedPreferences("SP_MANAGER", Context.MODE_PRIVATE);
         int char_size = sp_mngr.getInt("RECIPE_COUNT", -1);
-        //Toast.makeText(HomeActivity.this,"Size:"+char_size, Toast.LENGTH_SHORT).show();
+        //Going through all the recipes.
         for (int i = 0; i < char_size; ++i) {
             String sp_file_name = sp_mngr.getString(Integer.toString(i), "0");
 
@@ -346,20 +373,22 @@ public class MainActivity extends AppCompatActivity {
             String recipe_type = sp_file.getString("TYPE", "ERROR_LOADING");
             String recipe_tags = sp_file.getString("TAGS", "ERROR_LOADING");
 
+            //Create the new recipe and add it to the list.
             Recipe loadedRecipe = new Recipe(unique_id_loaded, recipe_name, recipe_instructions, recipe_ingredients, recipe_type, recipe_tags);
-            //loadedRecipe.setType(recipe_type);
-
             recipes.add(loadedRecipe);
         }
     }
 
+    /*
+    Reloading the recipes.
+     */
     private void reloadRecipes() {
         //For each recipe, re-read it's stored values
         for (int i = 0; i < recipes.size(); ++i) {
             SharedPreferences sp_rec = getSharedPreferences(recipes.get(i).getUnique_id(), Context.MODE_PRIVATE);
             String updatedName = sp_rec.getString("NAME", "ERROR_LOADING");
-            String updatedInstruction = sp_rec.getString("NAME", "ERROR_LOADING");
-            String updatedIngredients = sp_rec.getString("INSTRUCTIONS", "ERROR_LOADING");
+            String updatedInstruction = sp_rec.getString("INSTRUCTIONS", "ERROR_LOADING");
+            String updatedIngredients = sp_rec.getString("INGREDIENTS", "ERROR_LOADING");
             String updatedTags = sp_rec.getString("TAGS", "ERROR_LOADING");
             String updatedType = sp_rec.getString("TYPE", "ERROR_LOADING");
             int updated_Icon_id;
@@ -396,6 +425,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.deleteItem(position);
         reloadSPManager();
 
+        //Notify the users that a recipe has been deleted.
         View coordLayoutView = findViewById(R.id.coordview);
         Snackbar snackbar = Snackbar.make(coordLayoutView, "Recipe Deleted", Snackbar.LENGTH_LONG);
         snackbar.setAction("UNDO", null);

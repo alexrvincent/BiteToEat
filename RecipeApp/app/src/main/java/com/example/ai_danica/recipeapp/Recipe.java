@@ -4,10 +4,12 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 /**
- * Created by Ai_Danica on 2/21/2016.
+ * Recipe class to get the Recipe's name, ingredients, instructions, type and tags
+ * It is also to call the respective function of the recipe.
  */
 public class Recipe implements Parcelable {
 
+    //Constructor: name, ingredients, instructions, type and tags of recipe
     Recipe(String id, String name, String ingredients, String instructions, String type, String tags){
         this.id = id;
         this.name = name;
@@ -41,8 +43,9 @@ public class Recipe implements Parcelable {
 
         this.id = data[0];
         this.name = data[1];
-        this.instructions = data[2];
-        this.ingredients = data[3];
+        this.ingredients = data[2];
+        this.instructions = data[3];
+
         this.type = data[4];
         this.tags = data[5];
 
@@ -57,7 +60,7 @@ public class Recipe implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags){
         //TODO Auto-generated method stub
-        dest.writeStringArray(new String[]{this.id,this.name,this.instructions,this.ingredients,this.type,this.tags});
+        dest.writeStringArray(new String[]{this.id,this.name,this.ingredients,this.instructions,this.type,this.tags});
     }
 
     public static final Parcelable.Creator<Recipe> CREATOR = new Parcelable.Creator<Recipe>() {
